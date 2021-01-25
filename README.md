@@ -10,8 +10,8 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **18**
-- Number of refactorings applied: **27**
+- Number of code smells found: **22**
+- Number of refactorings applied: **31**
 
 ## Description
 
@@ -35,6 +35,10 @@ Thomas Domingues <tdomingues@myges.fr>
 | Feature envy - `calculateEarnedFrequentRenterPoints` in `Customer` #1: Customer should not be responsible for calculating frequent renter points | Move method `calculateEarnedFrequentRenterPoints` from `Customer` to `Rental`; Rename method `calculateEarnedFrequentRenterPoints` to `getEarnedFrequentRenterPoints` in `Rental` class; Remove parameter `Rental` from `getEarnedFrequentRenterPoints` method and use `this` instead | Improves readability and understandability, Respects SRP principle |
 | Complex conditional in `getEarnedFrequentPoints` method in `Rental` class | Decompose conditional in a method `isEligibleForBonus` in `Rental` class | Self-documenting code, improves maintainability |
 | Magic numbers in `getEarnedFrequentPoints` method in `Rental` class | Replace magic numbers with symbolic constants (2 variables) | Self-documenting code, improves maintainability |
+| Long Method - `statement()` in `Customer` #3: This method should not generate the rental history summary | Extract logic of customer rental history summary generation into a new method `generateRentalHistorySummary` in `Customer` class | Improves readability, isolate independent part of code |
+| Useless temporary variable `rentalPrice` in `statement` method of `Customer` | Inline variable `rentalPrice` | Improves readability and understandability |
+| Useless use of `String.valueOf` method in `generateRentalHistorySummary` method of `Customer` class | Remove usages | Improves readability |
+| Useless string concatenation in `generateRentalHistorySummary` method of `Customer` class | Refactor method to use [`StringBuilder`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/StringBuilder.html) along with `String.format` instead of concatenation | Improves performance |
 
 ## Installation
 
