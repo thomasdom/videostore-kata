@@ -10,8 +10,8 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **14**
-- Number of refactorings applied: **20**
+- Number of code smells found: **18**
+- Number of refactorings applied: **27**
 
 ## Description
 
@@ -31,6 +31,10 @@ Thomas Domingues <tdomingues@myges.fr>
 | Useless parameter `thisAmount` in `Customer.calculateRentalPrice` | Inline variable `thisAmount`; Change return type of `Customer.calculateRentalPrice` from `void` to `double`; Rename variable `thisAmount` to `rentalPrice` | Better readability, better understanding of the code |
 | Feature envy - `calculateRentalPrice` in `Customer` #1: Customer should not be responsible for calculating rental price | Move method `getRentalPrice` from `Customer` to `Rental`; Rename method `getRentalPrice` to `getPrice` in `Rental` class; Remove parameter `Rental` from `getPrice` method and use `this` instead | Improves readability and understandability, Respects SRP principle |
 | Class fields not final without setters in `Rental` class | Make class fields final | Self-documented code, optimizations made by the compiler |
+| Long Method - `statement()` in `Customer` #2: Customer should not calculate the earned frequent renter points | Extract logic of frequent renter points calculation into a new method `calculateEarnedFrequentRenterPoints` in `Customer` class | Improves readability, isolate independent part of code |
+| Feature envy - `calculateEarnedFrequentRenterPoints` in `Customer` #1: Customer should not be responsible for calculating frequent renter points | Move method `calculateEarnedFrequentRenterPoints` from `Customer` to `Rental`; Rename method `calculateEarnedFrequentRenterPoints` to `getEarnedFrequentRenterPoints` in `Rental` class; Remove parameter `Rental` from `getEarnedFrequentRenterPoints` method and use `this` instead | Improves readability and understandability, Respects SRP principle |
+| Complex conditional in `getEarnedFrequentPoints` method in `Rental` class | Decompose conditional in a method `isEligibleForBonus` in `Rental` class | Self-documenting code, improves maintainability |
+| Magic numbers in `getEarnedFrequentPoints` method in `Rental` class | Replace magic numbers with symbolic constants (2 variables) | Self-documenting code, improves maintainability |
 
 ## Installation
 

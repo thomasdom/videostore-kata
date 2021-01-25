@@ -1,6 +1,9 @@
 package com.thomasdomingues.videostore;
 
 public class Rental {
+    private static final int STANDARD_FREQUENT_RENTER_POINTS_EARNED = 1;
+    private static final int BONUS_FREQUENT_RENTER_POINTS = 1;
+
     private final Movie movie;
     private final int daysRented;
 
@@ -38,5 +41,19 @@ public class Rental {
         }
 
         return rentalPrice;
+    }
+
+    public int getEarnedFrequentRenterPoints() {
+        int earnedFrequentRenterPoints = STANDARD_FREQUENT_RENTER_POINTS_EARNED;
+
+        if (isEligibleForABonus()) {
+            earnedFrequentRenterPoints += BONUS_FREQUENT_RENTER_POINTS;
+        }
+
+        return earnedFrequentRenterPoints;
+    }
+
+    private boolean isEligibleForABonus() {
+        return this.getMovie().getPriceCode() == Movie.NEW_RELEASE && this.getDaysRented() > 1;
     }
 }

@@ -27,12 +27,7 @@ public class Customer {
 
         for (Rental rental : rentals) {
             double rentalPrice = rental.getPrice();
-
-            frequentRenterPoints++;
-
-            if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                    && rental.getDaysRented() > 1)
-                frequentRenterPoints++;
+            frequentRenterPoints += rental.getEarnedFrequentRenterPoints();
 
             result += "\t" + rental.getMovie().getTitle() + "\t"
                     + String.valueOf(rental) + "\n";
