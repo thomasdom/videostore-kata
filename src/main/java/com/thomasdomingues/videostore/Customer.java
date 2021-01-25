@@ -13,7 +13,20 @@ public class Customer {
     }
 
     public void rent(Movie movie, int daysRented) {
-        Rental newRental = new Rental(movie, daysRented);
+        RentalPricingStrategy pricingStrategy = null;
+        switch (movie.getPriceCode()) {
+            case REGULAR:
+                pricingStrategy = new RegularMoviePricing();
+                break;
+            case NEW_RELEASE:
+                pricingStrategy = new NewReleasePricing();
+                break;
+            case CHILDREN:
+                pricingStrategy = new ChildrenPricing();
+                break;
+        }
+
+        Rental newRental = new Rental(movie, daysRented, pricingStrategy);
         rentals.add(newRental);
     }
 

@@ -10,8 +10,8 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **26**
-- Number of refactorings applied: **37**
+- Number of code smells found: **27**
+- Number of refactorings applied: **38**
 
 ## Description
 
@@ -43,6 +43,7 @@ Thomas Domingues <tdomingues@myges.fr>
 | Useless setter `setPriceCode` in `Movie` class | Remove method | Improves readability |
 | Class fields not final without setters in `Movie` class | Make class fields final | Self-documented code, optimizations made by the compiler |
 | Use of symbolic constants instead of an Enum in `Movie` class | Replace symbolic constants by a new `PriceCode` enum; Refactor methods to use new enum; Refactor tests to use new enum | Forbids arbitrary values to be used when creating a movie, so it improves maintainability |
+| Feature envy - `Rental` class should delegate the pricing calculation to a dedicated class | Implement Strategy pattern to calculate rental pricing | Improves readability, separate concerns |
 
 ## Installation
 

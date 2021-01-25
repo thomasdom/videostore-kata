@@ -6,10 +6,12 @@ public class Rental {
 
     private final Movie movie;
     private final int daysRented;
+    private final RentalPricingStrategy pricingStrategy;
 
-    public Rental(Movie movie, int daysRented) {
+    public Rental(Movie movie, int daysRented, RentalPricingStrategy pricingStrategy) {
         this.movie = movie;
         this.daysRented = daysRented;
+        this.pricingStrategy = pricingStrategy;
     }
 
     public int getDaysRented() {
@@ -21,26 +23,7 @@ public class Rental {
     }
 
     public double getPrice() {
-        double rentalPrice = 0.0;
-
-        // determines the amount for each line
-        switch (this.getMovie().getPriceCode()) {
-            case REGULAR:
-                rentalPrice += 2;
-                if (this.getDaysRented() > 2)
-                    rentalPrice += (this.getDaysRented() - 2) * 1.5;
-                break;
-            case NEW_RELEASE:
-                rentalPrice += this.getDaysRented() * 3;
-                break;
-            case CHILDREN:
-                rentalPrice += 1.5;
-                if (this.getDaysRented() > 3)
-                    rentalPrice += (this.getDaysRented() - 3) * 1.5;
-                break;
-        }
-
-        return rentalPrice;
+        return pricingStrategy.calculatePricing(getDaysRented());
     }
 
     public int getEarnedFrequentRenterPoints() {
