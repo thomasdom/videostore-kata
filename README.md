@@ -1,8 +1,7 @@
 # VideoStore
 
 The videostore example from Martin Fowler's Refactoring, and from Episode 3 of
-[cleancoders.com](https://cleancoders.com), refactored following the best
-practices of the industry.
+[cleancoders.com](https://cleancoders.com), refactored following the best practices of the industry.
 
 ## Author
 
@@ -11,8 +10,8 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **10**
-- Number of refactorings applied: **13**
+- Number of code smells found: **14**
+- Number of refactorings applied: **20**
 
 ## Description
 
@@ -28,16 +27,19 @@ Thomas Domingues <tdomingues@myges.fr>
 | Useless variable `each` in `Customer` class | Remove variable `each` | Improves readability | 
 | Useless variable `rentals` in `Customer` class | Remove variable `rentals` | Improves readability | 
 | `Rental` class should be used only when renting movies | Refactor method `addRental` in `Customer` to create a rental in this method; Rename method `addRental` to `rent`; Change parameter of `rent` method from `Rental` to `Movie`; Refactor tests | Better readability, better understanding of code, developer-friendly API |
+| Long Method - `statement()` in `Customer` #1: Customer should not calculate the rental price | Extract logic of price calculation into a new method `getRentPrice` in `Customer` class | Improves readability, isolate independent part of code |
+| Useless parameter `thisAmount` in `Customer.calculateRentalPrice` | Inline variable `thisAmount`; Change return type of `Customer.calculateRentalPrice` from `void` to `double`; Rename variable `thisAmount` to `rentalPrice` | Better readability, better understanding of the code |
+| Feature envy - `calculateRentalPrice` in `Customer` #1: Customer should not be responsible for calculating rental price | Move method `getRentalPrice` from `Customer` to `Rental`; Rename method `getRentalPrice` to `getPrice` in `Rental` class; Remove parameter `Rental` from `getPrice` method and use `this` instead | Improves readability and understandability, Respects SRP principle |
+| Class fields not final without setters in `Rental` class | Make class fields final | Self-documented code, optimizations made by the compiler |
 
 ## Installation
 
 The application requires [Java 11](https://www.java.com/en/download/help/download_options.html)
 to execute properly.
 
-This project uses [Apache Maven](https://maven.apache.org/) as build tool. You
-need to [install](https://maven.apache.org/download.cgi) it. Apache Maven will
-be used throughout this documentation to install, configure and execute the
-application.
+This project uses [Apache Maven](https://maven.apache.org/) as build tool. You need
+to [install](https://maven.apache.org/download.cgi) it. Apache Maven will be used throughout this documentation to
+install, configure and execute the application.
 
 First you need to install the dependencies using your favorite shell:
 
@@ -69,8 +71,8 @@ Or if you prefer Apache Maven:
 mvn exec:java
 ```
 
-Note: Executing the application with Apache Maven results in a lot more output
-information, which is not recommended when debugging.
+Note: Executing the application with Apache Maven results in a lot more output information, which is not recommended
+when debugging.
 
 ## Contributing
 
