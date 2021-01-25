@@ -1,4 +1,4 @@
-
+package com.thomasdomingues.videostore;
 
 import junit.framework.*;
 

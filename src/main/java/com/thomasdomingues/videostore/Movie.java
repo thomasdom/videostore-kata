@@ -1,4 +1,4 @@
-
+package com.thomasdomingues.videostore;
 
 public class Movie
 {
