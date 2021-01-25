@@ -11,8 +11,9 @@ public class Customer {
         this.name = name;
     }
 
-    public void addRental(Rental rental) {
-        rentals.add(rental);
+    public void rent(Movie movie, int daysRented) {
+        Rental newRental = new Rental(movie, daysRented);
+        rentals.add(newRental);
     }
 
     public String getName() {

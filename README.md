@@ -11,8 +11,8 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **9**
-- Number of refactorings applied: **9**
+- Number of code smells found: **10**
+- Number of refactorings applied: **13**
 
 ## Description
 
@@ -27,6 +27,7 @@ Thomas Domingues <tdomingues@myges.fr>
 | Use of `while` instead of a `for` loop in `Customer` class | Change `while` by `for of` loop | Better readability of source code, uses Iterator under the hood (optimized for collection traversal) |
 | Useless variable `each` in `Customer` class | Remove variable `each` | Improves readability | 
 | Useless variable `rentals` in `Customer` class | Remove variable `rentals` | Improves readability | 
+| `Rental` class should be used only when renting movies | Refactor method `addRental` in `Customer` to create a rental in this method; Rename method `addRental` to `rent`; Change parameter of `rent` method from `Rental` to `Movie`; Refactor tests | Better readability, better understanding of code, developer-friendly API |
 
 ## Installation
 
