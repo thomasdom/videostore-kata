@@ -11,16 +11,22 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **3**
-- Number of refactorings applied: **3**
+- Number of code smells found: **9**
+- Number of refactorings applied: **9**
 
 ## Description
 
 | Detected code smell(s) | Refactoring technique(s) applied | Benefits |
 |------------------------|----------------------------------|----------|
 | Not using a build tool | Introduce Apache Maven as build tool for the project | Automatisable builds, dependency management, automatic test execution, and many more. |
-| Bad formatting in all source files | Reformat files with IDE | Improve readability of the source code |
-| Wrong order of symbols in classes | Reorder symbols in class according to best practices and IDE autocorrect feature | Improve readability of the source code |
+| Bad formatting in all source files | Reformat files with IDE | Improves readability of the source code |
+| Wrong order of symbols in classes | Reorder symbols in class according to best practices and IDE autocorrect feature | Improves readability of the source code |
+| Use of inappropriate data structure `Vector` in `Customer` class to store a list of rentals | Replace `Vector` by an [`ArrayList`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html) | No forced synchronization on data structure, improved performance, improved memory usage, improved traversal method |
+| Class fields not final without setters in `Customer` class | Make class fields final | Self-documented code, optimizations made by the compiler |
+| Use of `Enumeration` for rentals traversal in `Customer` class | Replace enumeration to iteration | Shorter method names, able to remove elements while traversing, use of optimized for loop |
+| Use of `while` instead of a `for` loop in `Customer` class | Change `while` by `for of` loop | Better readability of source code, uses Iterator under the hood (optimized for collection traversal) |
+| Useless variable `each` in `Customer` class | Remove variable `each` | Improves readability | 
+| Useless variable `rentals` in `Customer` class | Remove variable `rentals` | Improves readability | 
 
 ## Installation
 
