@@ -10,8 +10,8 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **29**
-- Number of refactorings applied: **41**
+- Number of code smells found: **31**
+- Number of refactorings applied: **44**
 
 ## Description
 
@@ -46,6 +46,10 @@ Thomas Domingues <tdomingues@myges.fr>
 | Feature envy - `Rental` class should delegate the pricing calculation to a dedicated class | Implement Strategy pattern to calculate rental pricing | Improves readability, separate concerns |
 | Wrong location of pricing strategies | Move classes and interface related to rental pricing strategy into a `pricing` subpackage | Improves understandability |
 | Common logic between pricing strategies | Introduce `PricingStrategy` superclass; Refactor strategies to use superclass | Separation of concerns |
+| User is allowed to build rentals randomly | Introduce a new `RentalBuilder` to build `Rental`s; Refactor `Customer` class to use `RentalBuilder` in `rent` method | Self-documenting API, improves maintainability |
+| Bad name for `statement` method of `Customer` class | Rename method to `getRentalHistorySummary` | Improves understandability |
+
+TODO: Add more tests to improve coverage.
 
 ## Installation
 

@@ -2,7 +2,7 @@ package com.thomasdomingues.videostore.pricing;
 
 public class ChildrenPricing extends PricingStrategy implements RentalPricingStrategy {
     private static final int MAXIMUM_RENT_DAYS = 3;
-    private static final double BASE_PRICE = 0.5;
+    private static final double BASE_PRICE = 1.5;
     private static final double ADDITIONAL_PRICE_PER_DAY = 1.5;
 
     public ChildrenPricing(int daysRented) {

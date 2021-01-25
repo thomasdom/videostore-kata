@@ -1,9 +1,6 @@
 package com.thomasdomingues.videostore;
 
-import com.thomasdomingues.videostore.pricing.ChildrenPricing;
-import com.thomasdomingues.videostore.pricing.NewReleasePricing;
-import com.thomasdomingues.videostore.pricing.RegularMoviePricing;
-import com.thomasdomingues.videostore.pricing.RentalPricingStrategy;
+import com.thomasdomingues.videostore.renting.RentalBuilderImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,24 +15,18 @@ public class Customer {
     }
 
     public void rent(Movie movie, int daysRented) {
-        RentalPricingStrategy pricingStrategy = null;
-        switch (movie.getPriceCode()) {
-            case REGULAR:
-                pricingStrategy = new RegularMoviePricing(daysRented);
-                break;
-            case NEW_RELEASE:
-                pricingStrategy = new NewReleasePricing(daysRented);
-                break;
-            case CHILDREN:
-                pricingStrategy = new ChildrenPricing(daysRented);
-                break;
+        try {
+            Rental newRental = new RentalBuilderImpl()
+                    .forMovie(movie)
+                    .withRentedDuration(daysRented)
+                    .build();
+            rentals.add(newRental);
+        } catch (Exception e) {
+            System.err.printf("Could not rent a movie for customer: %s%n", e.getMessage());
         }
-
-        Rental newRental = new Rental(movie, daysRented, pricingStrategy);
-        rentals.add(newRental);
     }
 
-    public String statement() {
+    public String getRentalHistorySummary() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
 
