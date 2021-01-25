@@ -10,8 +10,8 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **22**
-- Number of refactorings applied: **31**
+- Number of code smells found: **26**
+- Number of refactorings applied: **37**
 
 ## Description
 
@@ -39,6 +39,10 @@ Thomas Domingues <tdomingues@myges.fr>
 | Useless temporary variable `rentalPrice` in `statement` method of `Customer` | Inline variable `rentalPrice` | Improves readability and understandability |
 | Useless use of `String.valueOf` method in `generateRentalHistorySummary` method of `Customer` class | Remove usages | Improves readability |
 | Useless string concatenation in `generateRentalHistorySummary` method of `Customer` class | Refactor method to use [`StringBuilder`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/StringBuilder.html) along with `String.format` instead of concatenation | Improves performance |
+| Wrong spelling of `CHILDRENS` variable in `Movie` class | Rename variable to `CHILDREN` | Improves readability |
+| Useless setter `setPriceCode` in `Movie` class | Remove method | Improves readability |
+| Class fields not final without setters in `Movie` class | Make class fields final | Self-documented code, optimizations made by the compiler |
+| Use of symbolic constants instead of an Enum in `Movie` class | Replace symbolic constants by a new `PriceCode` enum; Refactor methods to use new enum; Refactor tests to use new enum | Forbids arbitrary values to be used when creating a movie, so it improves maintainability |
 
 ## Installation
 

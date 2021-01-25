@@ -25,15 +25,15 @@ public class Rental {
 
         // determines the amount for each line
         switch (this.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
+            case REGULAR:
                 rentalPrice += 2;
                 if (this.getDaysRented() > 2)
                     rentalPrice += (this.getDaysRented() - 2) * 1.5;
                 break;
-            case Movie.NEW_RELEASE:
+            case NEW_RELEASE:
                 rentalPrice += this.getDaysRented() * 3;
                 break;
-            case Movie.CHILDRENS:
+            case CHILDREN:
                 rentalPrice += 1.5;
                 if (this.getDaysRented() > 3)
                     rentalPrice += (this.getDaysRented() - 3) * 1.5;
@@ -54,6 +54,6 @@ public class Rental {
     }
 
     private boolean isEligibleForABonus() {
-        return this.getMovie().getPriceCode() == Movie.NEW_RELEASE && this.getDaysRented() > 1;
+        return this.getMovie().getPriceCode() == PriceCode.NEW_RELEASE && this.getDaysRented() > 1;
     }
 }
