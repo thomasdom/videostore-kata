@@ -10,8 +10,10 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **31**
-- Number of refactorings applied: **44**
+- Number of code smells found: **32**
+- Number of refactorings applied: **45**
+
+Note: This does not include some additional tests 
 
 ## Description
 
@@ -48,6 +50,7 @@ Thomas Domingues <tdomingues@myges.fr>
 | Common logic between pricing strategies | Introduce `PricingStrategy` superclass; Refactor strategies to use superclass | Separation of concerns |
 | User is allowed to build rentals randomly | Introduce a new `RentalBuilder` to build `Rental`s; Refactor `Customer` class to use `RentalBuilder` in `rent` method | Self-documenting API, improves maintainability |
 | Bad name for `statement` method of `Customer` class | Rename method to `getRentalHistorySummary` | Improves understandability |
+| No main class | Add a main class with examples of usage | Improves understandability |
 
 TODO: Add more tests to improve coverage.
 

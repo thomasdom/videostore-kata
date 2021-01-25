@@ -6,7 +6,7 @@
 
   <groupId>com.thomasdomingues.videostore</groupId>
   <artifactId>VideoStore</artifactId>
-  <version>0.1</version>
+  <version>1.0</version>
 
   <name>VideoStore</name>
   <url>https://github.com/thomasdom/videostore-kata</url>
