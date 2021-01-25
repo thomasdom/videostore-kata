@@ -11,14 +11,16 @@ Thomas Domingues <tdomingues@myges.fr>
 
 ## Statistics
 
-- Number of code smells found: **1**
-- Number of refactorings applied: **1**
+- Number of code smells found: **3**
+- Number of refactorings applied: **3**
 
 ## Description
 
 | Detected code smell(s) | Refactoring technique(s) applied | Benefits |
 |------------------------|----------------------------------|----------|
 | Not using a build tool | Introduce Apache Maven as build tool for the project | Automatisable builds, dependency management, automatic test execution, and many more. |
+| Bad formatting in all source files | Reformat files with IDE | Improve readability of the source code |
+| Wrong order of symbols in classes | Reorder symbols in class according to best practices and IDE autocorrect feature | Improve readability of the source code |
 
 ## Installation
 
