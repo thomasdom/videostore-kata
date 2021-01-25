@@ -1,5 +1,10 @@
 package com.thomasdomingues.videostore;
 
+import com.thomasdomingues.videostore.pricing.ChildrenPricing;
+import com.thomasdomingues.videostore.pricing.NewReleasePricing;
+import com.thomasdomingues.videostore.pricing.RegularMoviePricing;
+import com.thomasdomingues.videostore.pricing.RentalPricingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -16,13 +21,13 @@ public class Customer {
         RentalPricingStrategy pricingStrategy = null;
         switch (movie.getPriceCode()) {
             case REGULAR:
-                pricingStrategy = new RegularMoviePricing();
+                pricingStrategy = new RegularMoviePricing(daysRented);
                 break;
             case NEW_RELEASE:
-                pricingStrategy = new NewReleasePricing();
+                pricingStrategy = new NewReleasePricing(daysRented);
                 break;
             case CHILDREN:
-                pricingStrategy = new ChildrenPricing();
+                pricingStrategy = new ChildrenPricing(daysRented);
                 break;
         }
 

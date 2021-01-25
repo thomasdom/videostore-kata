@@ -1,5 +1,7 @@
 package com.thomasdomingues.videostore;
 
+import com.thomasdomingues.videostore.pricing.RentalPricingStrategy;
+
 public class Rental {
     private static final int STANDARD_FREQUENT_RENTER_POINTS_EARNED = 1;
     private static final int BONUS_FREQUENT_RENTER_POINTS = 1;
@@ -23,7 +25,7 @@ public class Rental {
     }
 
     public double getPrice() {
-        return pricingStrategy.calculatePricing(getDaysRented());
+        return pricingStrategy.calculatePricing();
     }
 
     public int getEarnedFrequentRenterPoints() {
